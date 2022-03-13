@@ -104,7 +104,10 @@ def announce(message):
         with open("user_data.json", "r") as f:
             data = json.load(f)
             for user in data["userdata"]:
-                bot.send_message(user, f"Announcement:\n{msg}")
+                try:
+                    bot.send_message(user, f"Announcement:\n{msg}")
+                except Exception:
+                    pass
 
 @bot.message_handler(commands=['debug'])
 def debug(message):
